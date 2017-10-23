@@ -1,6 +1,6 @@
 <?php
 /*
-	Plugin Name: Red Blue Sharing
+	Plugin Name: Red Blue Share
 	Plugin URI: http://redblue.us
 	Description: An addon which sets up several ways to share
 	Version: 0.9
@@ -24,6 +24,6 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 // Plugin directory
-define( 'REDBLUE_SHARING', dirname( __FILE__ ) );
+define( 'REDBLUE_SHARE', dirname( __FILE__ ) );
 
 add_shortcode( $tag, $func );
