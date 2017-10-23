@@ -50,10 +50,17 @@ function rb_share_main_shortcode( $atts, $content, $tag ) {
 
     $atts_array = shortcode_atts( array(
         'href' => $share_link,
+        'url' => $share_link,
         'text' => 'Share on ' . $tag,
         'class' => null,
         'icon' => $icon,
     ), $atts );
+
+    if ( $atts_array['url'] )
+        $link = $atts_array['url'];
+
+    if ( $atts_array['href'] )
+        $link = $atts_array['href'];
 
     if ( $classes ) {
         $class = $atts_array['class'] . ' ' . $classes;
@@ -63,7 +70,7 @@ function rb_share_main_shortcode( $atts, $content, $tag ) {
 
     ob_start();
 
-    printf( '<a target="_blank" class="button button-social %s" href="%s">%s</a>', $classes, $atts_array['href'], $atts_array['text'] );
+    printf( '<a target="_blank" class="button button-social %s" href="%s">%s</a>', $classes, $link, $atts_array['text'] );
 
     return ob_get_clean();
 }
