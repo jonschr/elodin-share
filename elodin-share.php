@@ -1,11 +1,11 @@
 <?php
 /*
-	Plugin Name: Red Blue Share
-	Plugin URI: http://redblue.us
+	Plugin Name: Elodin Simple Sharing
+	Plugin URI: http://elod.in
 	Description: An addon which sets up several ways to share
-	Version: 0.9
+	Version: 0.91
     Author: Jon Schroeder
-    Author URI: http://redblue.us
+    Author URI: http://elod.in
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 // Plugin directory
-define( 'REDBLUE_SHARE', dirname( __FILE__ ) );
+define( 'ELODIN_SHARE', dirname( __FILE__ ) );
 
 function rb_share_main_shortcode( $atts, $content, $tag ) {
     
