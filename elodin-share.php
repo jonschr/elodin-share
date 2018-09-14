@@ -26,6 +26,21 @@ if ( !defined( 'ABSPATH' ) ) {
 // Plugin directory
 define( 'ELODIN_SHARE', dirname( __FILE__ ) );
 
-// Includes
-include_once( 'lib/post_type_sharing_support.php' );
-include_once( 'lib/shortcode.php' );
+// add_action( 'admin_notices', 'es_error_notice_ACF' );
+function es_error_notice_ACF() {
+    
+    if( !class_exists( 'acf_pro_updates' ) ) {
+        echo '<div class="error notice"><p>Please install and activate the <a target="_blank" href="https://www.advancedcustomfields.com/pro/">Advanced Custom Fields Pro</a> plugin. Without it, the Elodin Simple Sharing plugin won\'t operate correctly</p></div>';
+
+    }
+
+}
+
+// if( class_exists( 'acf_pro_updates' ) ) {
+
+    // Includes
+    include_once( 'lib/post_type_sharing_support.php' );
+    include_once( 'lib/shortcode.php' );
+    // include_once( 'lib/custom_fields.php' );
+
+// }

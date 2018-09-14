@@ -9,16 +9,16 @@ function rb_share_main_shortcode( $atts, $content, $tag ) {
     //* Do things before processing the shortcode 
     switch ( $tag ) {
         case 'facebook':
-            $icon = '<span class="dashicons dashicons-facebook-alt"></span>';
-            $share_link = 'https://www.facebook.com/sharer/sharer.php?u=' . $current_url;
-            $classes = 'dashicons-before dashicons-facebook-alt';
+            $icon = apply_filters( 'facebook_icon', '<span class="dashicons dashicons-facebook-alt"></span>' );
+            $share_link = apply_filters( 'facebook_share_link', 'https://www.facebook.com/sharer/sharer.php?u=' . $current_url, $current_url );
+            $classes = apply_filters( 'facebook_classes', 'dashicons-before dashicons-facebook-alt button button-social button-facebook' );
 
         break;
 
         case 'twitter':
-            $icon = '<span class="dashicons dashicons-twitter"></span>';
-            $share_link = 'http://twitter.com/share?url=' . $current_url;
-            $classes = 'dashicons-before dashicons-twitter';
+            $icon = apply_filters( 'twitter_icon', '<span class="dashicons dashicons-twitter"></span>' );
+            $share_link = apply_filters( 'twitter_share_link',  'http://twitter.com/share?url=' . $current_url, $current_url );
+            $classes = apply_filters( 'twitter_classes', 'dashicons-before dashicons-twitter button button-social button-twitter' );
         break;
     }
 
@@ -44,7 +44,7 @@ function rb_share_main_shortcode( $atts, $content, $tag ) {
 
     ob_start();
 
-    printf( '<a target="_blank" class="button button-social %s" href="%s">%s</a>', $classes, $link, $atts_array['text'] );
+    printf( '<a target="_blank" class="%s" href="%s">%s</a>', $classes, $link, $atts_array['text'] );
 
     return ob_get_clean();
 }

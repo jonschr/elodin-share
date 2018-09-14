@@ -25,5 +25,5 @@ function es_check_sharing_cpt_support() {
 add_action( 'init', 'es_add_default_cpt_sharing_support' );
 function es_add_default_cpt_sharing_support() {
 	add_post_type_support( 'page', 'social' );
-	add_post_type_support( 'issues', 'social' );
+	add_post_type_support( 'post', 'social' );
 }
