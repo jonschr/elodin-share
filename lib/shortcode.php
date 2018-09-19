@@ -6,8 +6,9 @@ function rb_share_main_shortcode( $atts, $content, $tag ) {
 
     $current_url = get_the_permalink();
 
-    //* Do things before processing the shortcode 
+    // Do things before processing the shortcode 
     switch ( $tag ) {
+
         case 'facebook':
             $icon = apply_filters( 'facebook_icon', '<span class="dashicons dashicons-facebook-alt"></span>' );
             $share_link = apply_filters( 'facebook_share_link', 'https://www.facebook.com/sharer/sharer.php?u=' . $current_url, $current_url );
@@ -49,6 +50,32 @@ function rb_share_main_shortcode( $atts, $content, $tag ) {
     return ob_get_clean();
 }
 
-//* Add shortcodes for each case
+// Add shortcodes for each case
 add_shortcode( 'facebook', 'rb_share_main_shortcode' );
 add_shortcode( 'twitter', 'rb_share_main_shortcode' );
+
+// Add filter to conditionally replace the Facebook share link if a custom one is being used
+add_filter( 'facebook_share_link', 'facebook_check_for_custom_url', 20, 1 );
+function facebook_check_for_custom_url( $args ) {
+    $facebook_custom_url = get_post_meta( get_the_ID(), 'facebookurl', true );
+    
+    // Return the custom lnk instead of the page link if there is one
+    if ( $facebook_custom_url )
+        return $facebook_custom_url;  
+    
+    // Otherwise, leave it alone
+    return $args;
+}
+
+// Add filter to conditionally replace the Twitter share link if a custom one is being used
+add_filter( 'twitter_share_link', 'twitter_check_for_custom_url', 20, 1 );
+function twitter_check_for_custom_url( $args ) {
+    $twitter_custom_url = get_post_meta( get_the_ID(), 'twitterurl', true );
+    
+    // Return the custom lnk instead of the page link if there is one
+    if ( $twitter_custom_url )
+        return $twitter_custom_url;  
+    
+    // Otherwise, leave it alone
+    return $args;
+}

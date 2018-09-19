@@ -26,7 +26,8 @@ if ( !defined( 'ABSPATH' ) ) {
 // Plugin directory
 define( 'ELODIN_SHARE', dirname( __FILE__ ) );
 
-// add_action( 'admin_notices', 'es_error_notice_ACF' );
+// Show notice if ACF isn't installed.
+add_action( 'admin_notices', 'es_error_notice_ACF' );
 function es_error_notice_ACF() {
     
     if( !class_exists( 'acf_pro_updates' ) ) {
@@ -36,11 +37,11 @@ function es_error_notice_ACF() {
 
 }
 
-// if( class_exists( 'acf_pro_updates' ) ) {
+if( class_exists( 'acf_pro_updates' ) ) {
 
     // Includes
     include_once( 'lib/post_type_sharing_support.php' );
     include_once( 'lib/shortcode.php' );
-    // include_once( 'lib/custom_fields.php' );
+    include_once( 'lib/custom_fields.php' );
 
-// }
+}
