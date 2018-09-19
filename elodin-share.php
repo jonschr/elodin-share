@@ -3,7 +3,7 @@
 	Plugin Name: Elodin Simple Sharing
 	Plugin URI: http://elod.in
 	Description: An addon which sets up several ways to share
-	Version: 0.91
+	Version: 1.0
     Author: Jon Schroeder
     Author URI: http://elod.in
 
