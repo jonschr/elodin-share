@@ -31,6 +31,23 @@ You can add those metaboxes like so, in your functions.php file:
 add_post_type_support( 'mycpt', 'social' );
 ```
 
+If you need to remove the boxes from pages/posts, you can do that in your functions.php file:
+
+```php
+add_action( 'init', 'es_cpt_support' );
+function es_cpt_support() {
+	
+	// Add support for the metaboxes on issues
+	add_post_type_support( 'mycpt', 'social' );
+	
+	// Remove from posts
+	remove_post_type_support( 'post', 'social' );
+	
+	// Remove from pages
+	remove_post_type_support( 'page', 'social' );
+}
+```
+
 ## Custom button text
 
 If you'd like to customize the text for Facebook or twitter buttons, you can do that like so in the shortcode:
