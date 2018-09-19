@@ -2,6 +2,12 @@
 
 To use this plugin, all you need to do is include the [facebook] and/or [twitter] shortcodes. There are a number of defaults set up on each of those which will make them into buttons with icons by default.
 
+**To use sharing links *within* a content area, just use the shortcodes in any WordPress content area:**
+
+```html
+[facebook] [twitter]
+```
+
 **To use these sharing links in your theme or plugin files, simply include the shortcode like so:**
 
 ```php
